@@ -1,0 +1,250 @@
+@font-face {
+   font-family: Helvetica;
+   src: url(../asssets/fonts/Helvetica.ttf);
+}
+@font-face {
+   font-family: Worksans_M;
+   src: url(../asssets/fonts/WorkSans-Medium.ttf);
+}
+@font-face {
+   font-family: Worksans_R;
+   src: url(../asssets/fonts/WorkSans-Regular.ttf);
+}
+@font-face {
+   font-family: Canela_L;
+   src: url(../asssets/fonts/Canela-Light-Trial.otf);
+}
+@font-face {
+   font-family: Canela_T;
+   src: url(../asssets/fonts/Canela-Thin-Trial.otf);
+}
+
+
+:root {
+   --pink: #FFEFD6;
+   --black: rgb(56, 56, 56);
+   --red: #800020;
+   --gold: #D4AF37;
+   --lightpink: #FFF8DC;
+   --divider: 3rem;
+}
+
+::selection {
+   color: var(--pink);
+   background-color: var(--gold);
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   list-style-type: none;
+   box-sizing: border-box;
+   scroll-behavior: smooth;
+   /* outline: 1px solid black; */
+}
+
+::-webkit-scrollbar { display: none;}
+
+body {
+   background-color: var(--pink);
+   width: 100vw;
+}
+
+main {
+   max-width: 1000px;
+   margin-inline: auto;
+   overflow-x: hidden;
+}
+
+section {
+   display: flex;
+   flex-direction: column;
+   place-items: center;
+   padding-block: var(--divider);
+}
+
+nav {
+   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+   position: fixed;
+   width: 100%;
+   top: 0;
+   background-color: var(--lightpink);
+   border-bottom: 1px solid var(--gold);
+   transition: 0.5s;
+   z-index: 1;
+}
+
+.hamburger-svg {
+   height: 1.2rem;
+   stroke: var(--red);
+}
+
+.nav-icon {
+   background-color: var(--lightpink);
+   padding: 1rem 0 1rem 0;
+   display: none;
+}
+
+.nav-links {
+   display: flex;
+   place-content: center;
+}
+
+nav a {
+   font-family: Worksans_R;
+   color: var(--black);
+   text-decoration: none;
+   font-size: 1.25rem;
+   padding: 1rem 1.25rem;
+   text-decoration: underline;
+   text-decoration-color: transparent;
+   transition: text-decoration-color 0.2s;
+}
+
+nav a:active {
+   text-decoration-color: var(--red);
+}
+
+nav a.active {
+   text-decoration: underline;
+   text-decoration-color: var(--gold);
+   text-decoration-skip: spaces;
+}
+
+p {
+   font-family: Worksans_M;
+   max-width: 80vw;
+   font-size: min(3.5vw, 1.25rem);
+   color: var(--black);
+}
+
+img {
+   object-fit: contain;
+   width: 100%;
+}
+
+.hero {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: stretch;
+   padding-top: calc(3.5rem + 10vh);
+   padding-inline: 15px;
+}
+
+.hero-img-div {
+   width: min(50vw, 250px);
+   position: relative;
+}
+
+.portrait-svg {
+   pointer-events: none;
+   position: absolute;
+   top: -10%;
+   left: 0;
+   z-index: -1;
+   stroke-dashoffset: 1000;
+   stroke-dasharray: 1000;
+   animation: dash 4s 0.5s forwards;
+}
+
+.hero-text {
+   position: relative;
+   
+}
+
+.text-svg {
+   z-index: -1;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   stroke-dashoffset: 1000;
+   stroke-dasharray: 1000;
+   animation: dash 8s forwards;
+}
+
+@keyframes dash {
+   to { stroke-dashoffset: 0; }
+}
+
+.hero-text h1 {
+   width: fit-content;
+   font-size: min(10vw, 3.5rem);
+   line-height: 1.1em;
+   padding-block: min(4vw, 2rem);
+   transform: translateX(-0.25rem);
+}
+
+.hero-text p {
+   max-width: min(40vw, 20rem);
+   font-size: min(4.5vw, 1.25rem);
+   margin-bottom: auto;
+   transform: translateX(-0.25rem);
+}
+
+h1 {
+   font-family: Canela_T;
+   color: var(--gold);
+   font-size: min(15vw, 3.5rem)
+}
+
+.divider {
+   height: 2px;
+   width: 50%;
+   border-top: 2px solid var(--gold);
+   padding-bottom: calc(var(--divider) + 2vw);
+}
+
+.divider + h1 {
+   padding-bottom: calc(var(--divider) + 3vw);
+} 
+
+.portfolio-sec {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 4.5rem;
+   padding-inline: calc(var(--divider) + 3vw);
+}
+
+/* Helvetica Worksans_M Worksans_R Canela_L Canela_T Canela_R */
+
+/* check with javascript bp */
+@media only screen and (max-width: 700px) {
+   .nav-links {
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+      height: 0px;
+      transition: 0.5s;
+   }
+
+   .nav-links.links-show {
+      height: 15rem;
+   }
+
+   nav { border-width: 2px;}
+
+   nav a {
+      padding: 0.5rem 0 1rem 0;
+   }
+
+   nav a:first-child {
+      padding-top: 1.25rem;
+   }
+
+
+   .nav-icon {
+      display: flex;
+      place-content: center;
+   }
+
+   .hero-text h1 {
+      width: min-content;
+   }
+
+   .portfolio-sec {
+      grid-template-columns: 1fr;
+      padding-inline: 35px;
+   }
+   
+}
